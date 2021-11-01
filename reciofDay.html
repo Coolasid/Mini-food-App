@@ -4,71 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        #navBar {
-            height: 50px;
-            display: grid;
-            grid-template-columns: 25% 45% 15% 15%;
-        }
-    
-        /* div{
-                border: 1px solid black;
-            } */
-    
-        #nameBox {
-            display: grid;
-            grid-template-columns: 20% 80%;
-            grid-template-rows: 100%;
-        }
-    
-        .img {
-            width: 60%;
-            margin: 2% 0 0 15%;
-    
-        }
-    
-        #name {
-            font-size: 2vw;
-            padding: 2.5% 0 0 2%;
-            font-family: 'Courier New', Courier, monospace;
-    
-        }
-    
-        #inpFood {
-            margin: 1.8% 0 0 15%;
-            width: 50%;
-            height: 50%;
-    
-            font-size: 16px;
-            outline: royalblue;
-    
-        }
-    
-        #btn {
-            width: 10%;
-            height: 62%;
-    
-            outline: none
-        }
-    
-        #day {
-            padding: 8% 0 0 0;
-        }
-    
-        #latest {
-            padding: 8% 0 0 0;
-        }
-    </style>
+    <title>Receipe of the Day</title>
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
-    
+    <div id="navBarBox" ></div>
+    <div id="cont"></div>
 </body>
 </html>
 <script type="module">
 
     import navBar from "../components/navBar.js"
+    let navBarBox = document.getElementById("navBarBox");
 
-    document.body.innerHTML = navBar()
+    navBarBox.innerHTML = navBar()
+
+    import { getData, appendData} from "../scripts/getData.js"
+
+    let response = await getData("https://www.themealdb.com/api/json/v1/1/random.php")
+    // console.log(response);
+
+    let cont = document.getElementById("cont")
+    appendData(response, cont)
+
+    let imgBox = document.getElementById("imgbox");
+        imgBox.addEventListener("click", home)
+
+        function home() {
+            window.location.href = "HomePage.html"
+        }
 
 </script>
