@@ -55,4 +55,9 @@
             padding: 8% 0 0 0;
         }
 
+        #searchBox{
+            display: grid;
+            grid-template-columns: 20% 20% 20% 20% 20%;
+        }
+
         

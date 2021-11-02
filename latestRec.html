@@ -8,13 +8,69 @@
    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
+
+    <div id="navBarBox">
+    
+    </div>
+    <div id="searchBox">
+    
+    </div>
     
 </body>
 </html>
 <script type="module">
 
-    import navBar from "../components/navBar.js"
+    
+        import navBar from "../components/navBar.js"
 
-    document.body.innerHTML = navBar()
+        let navBarDiv = document.getElementById("navBarBox");
 
+        navBarDiv.innerHTML = navBar();
+
+        let searchBtn = document.getElementById("btn");
+        searchBtn.addEventListener("click", searchMeal)
+
+        async function searchMeal() {
+
+
+            let name = document.getElementById("btn").value;
+
+            let res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
+
+            let data = await res.json();
+
+            // console.log(data);
+            appendSearchData(data.meals)
+        }
+        let Div = document.getElementById("searchBox");
+        function appendSearchData(searchData) {
+            Div.textContent = null;
+            // console.log(searchData)
+            searchData.forEach((el) => {
+
+                let name = el.strMeal;
+                let imgs = el.strMealThumb;
+
+
+
+                // console.log(name, imgs);
+
+                let divs = document.createElement("div");
+                let img = document.createElement("img");
+                img.src = imgs;
+                img.style.width = "50%"
+                let p = document.createElement("p");
+                p.textContent = name;
+
+                divs.append(img, p);
+
+                Div.append(divs);
+
+            })
+
+
+        }
+
+
+    
 </script>

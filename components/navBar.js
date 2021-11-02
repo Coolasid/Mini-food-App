@@ -11,7 +11,7 @@ function navBar() {
         </div>
         <div id="serachBox">
             <input type="text" placeholder="Search food" id="inpFood">
-            <button id="btn" onclick="searchMeal()">Search</button>
+            <button id="btn">Search</button>
         </div>
         <div id="day">
             <a href="reciofDay.html">Get receipe if the day</a>
