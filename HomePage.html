@@ -38,13 +38,13 @@ async function searchMeal(){
 
     let data = await res.json();
 
-    // console.log(data);
+    console.log(data);
     appendSearchData(data.meals)
 }
     let Div = document.getElementById("searchBox");
 function appendSearchData(searchData){
     Div.textContent = null;
-    // console.log(searchData)
+    console.log(searchData)
     searchData.forEach((el) => {
        
         let name = el.strMeal;
